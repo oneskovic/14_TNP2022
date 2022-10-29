@@ -1,0 +1,66 @@
+% !TEX encoding = UTF-8 Unicode
+
+\documentclass[a4paper]{article}
+
+\usepackage{color}
+\usepackage{url}
+\usepackage[T2A]{fontenc} % enable Cyrillic fonts
+\usepackage[utf8]{inputenc} % make weird characters work
+\usepackage{graphicx}
+
+\usepackage[english,serbian]{babel}
+
+\usepackage[unicode]{hyperref}
+\hypersetup{colorlinks,citecolor=green,filecolor=green,linkcolor=blue,urlcolor=blue}
+
+\newtheorem{primer}{Primer}[section]
+\newcommand\todo[1]{\textcolor{red}{#1}}
+
+\begin{document}
+
+\title{Kako i zašto funkcioniše blockchain?\\ \small{Seminarski rad u okviru kursa\\Tehničko i naučno pisanje\\ Matematički fakultet}}
+\author{
+    Lazić, Jovana\\ 
+    \texttt{kontakt email adresa autora}
+    \and
+    Nikić, Ognjen\\ 
+    \texttt{kontakt email adresa autora}
+    \and
+    Nešković, Ognjen\\ 
+    \texttt{mi22009@alas.matf.bg.ac.rs}
+    \and
+    Sekešan, Pavle\\ 
+    \texttt{kontakt email adresa autora}
+}
+\date{\today}
+\maketitle
+
+\abstract{
+U radu su sažeto iznete osnove kriptografije potrebne za razumevanje i implementaciju blokčejna. Ukratko je predstavljena istorija blokčejna, kao i glavne ideje potrebne za realizaciju blokčejna koji se nalazi iza jedne od najpoznatijih kriptovaluta - Bitcoin. \todo{Dopuniti kasnije...}
+\tableofcontents
+
+\newpage
+
+\section{Uvod}
+\label{sec:uvod}
+\todo{Napisati uvod - ukratko nešto o istoriji blokčejna, čemu služi, zašto je koristan, pomenuti osnovne ideje koje se koriste (heširanje, merkle stabla, asimetrična kriptografija (digitalni potpisi) itd.)}
+Ovako treba da citiramo stvari \cite{haltingproblem}
+
+\section{Osnove kriptografije}	
+\label{sec:termini_i_citiranje}
+\subsection{Kriptografske heš funkcije}
+\todo{Napisati ovaj subsection}
+\subsection{Asimetrična kriptografija}
+\todo{Napisati ovaj subsection}
+
+
+\addcontentsline{toc}{section}{Literatura}
+\appendix
+
+
+\bibliography{seminarski} 
+\bibliographystyle{plain}
+
+
+
+\end{document}
