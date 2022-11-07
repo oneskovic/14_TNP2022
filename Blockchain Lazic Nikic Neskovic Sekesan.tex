@@ -2,6 +2,7 @@
 
 \documentclass[a4paper]{article}
 
+\usepackage{float}
 \usepackage{color}
 \usepackage{url}
 \usepackage[T2A]{fontenc} % enable Cyrillic fonts
@@ -44,7 +45,6 @@ U radu su sažeto iznete osnove kriptografije potrebne za razumevanje i implemen
 \section{Uvod}
 \label{sec:uvod}
 \todo{Napisati uvod - ukratko nešto o istoriji blokčejna, čemu služi, zašto je koristan, pomenuti osnovne ideje koje se koriste (heširanje, merkle stabla, asimetrična kriptografija (digitalni potpisi) itd.)}
-Ovako treba da citiramo stvari \cite{haltingproblem}
 
 \section{Kriptografske osnove}	
 \label{sec:kriptografske_osnove}
@@ -57,6 +57,23 @@ Ovako treba da citiramo stvari \cite{haltingproblem}
 
 \section{Blokčejn}
 \label{sec:blockchain}
+
+Blokčejn je decentralizovan, distribuiran i najčešće javan skup podataka (najčešće transakcija ili drugih zapisa) \cite{wood2014ethereum} sačinjen od manjih jedinica podataka - ''blokova''.
+Blokovi su takvi da se dati blok ne može izmeniti bez promene svih blokova koji dolaze nakon njega. Ovim blokovi uspostavljaju ''istoriju'', odnosno sekvencu izmena na javnom skupu podataka.
+\begin{figure}[H]
+    \centering
+        \includegraphics[scale=0.3]{bitcoin_blockchain_diagram.pdf}
+    \caption{Bitcoin blokčejn}
+    \label{fig:btc_blockchain}
+\end{figure}
+Na primer u slučaju Bitcoin blokčejna (slika \ref{fig:btc_blockchain}) blokovi sadrže, pored ostalog, heš prethodnog bloka i transakcije (preciznije merkle stablo izgrađeno nad transakcijama).
+Time što jedan blok sadrži heš bloka koji je kreiran pre njega je uspostavljen redosled blokova, pa i time redosled transakcija.
+Neke izmene nad skupom podataka moraju biti odobrene od strane pojedinca kome podaci pripadaju (na primer u slučaju transakcija) što se postiže metodama asimetrične kriptografije.
+Svi učesnici u distribuiranoj mreži mogu lako verifikovati da li su izmene u blokčejnu validne i složiti se sa izmenama ili glasati protiv njih.
+Kako bi se došlo do konsenzusa oko toga koja sekvenca izmena na blokčejnu je validna uvode se metode poput dokaza o izvršenom radu (proof of work), dokaza o posedovanju valute (proof of stake) itd.
+Metode za postizanje konsenzusa se biraju tako da se postigne veliki stepen otpornosti prema ne-kooperativnim agentima u distribuiranoj mreži.
+Zajedno sa javno dostupnim blokčejnom ovaj sistem rešava jedan od značajnih problema digitalnih dobara poznat kao ''double spending''. \cite{nakamoto2008bitcoin}
+
 
 \subsection{Blokovi}
 \todo{Napisati ovaj subsection - apstraktnije opisati pojam bloka u blokčejnu generalno (ne samo kod bitkojna), način za postizanje konsenzusa (proof of work, proof of stake,...), forkovi}
