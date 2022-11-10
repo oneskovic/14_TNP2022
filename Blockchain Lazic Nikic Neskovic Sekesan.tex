@@ -74,11 +74,45 @@ Kako bi se došlo do konsenzusa oko toga koja sekvenca izmena na blokčejnu je v
 Metode za postizanje konsenzusa se biraju tako da se postigne veliki stepen otpornosti prema ne-kooperativnim agentima u distribuiranoj mreži.
 Zajedno sa javno dostupnim blokčejnom ovaj sistem rešava jedan od značajnih problema digitalnih dobara poznat kao ''double spending''. \cite{nakamoto2008bitcoin}
 
-
 \subsection{Blokovi}
-\todo{Napisati ovaj subsection - apstraktnije opisati pojam bloka u blokčejnu generalno (ne samo kod bitkojna), način za postizanje konsenzusa (proof of work, proof of stake,...), forkovi}
+Blokovi su manji skupovi podataka koji se povezuju kako bi formirali krajnji lanac blokova (tj. blokčejn).
+Članovi distribuirane mreže (tj. korisnici blokčejna) objavljuju javno izmene koje žele da se dogode.
+Članovi zatim skupljaju veći broj izmena i spajaju ih da formiraju jedan blok.
+Svaki blok sadrži heš (dobijen pomoću kriptografski bezbedne heš funkcije) prethodnog bloka.
+Ovim je uspostavljen redosled blokova u lancu. Dodatno modifikacija nekog bloka postaje znatno teža jer ukoliko
+bi neki čvor u distribuiranoj mreži izmenio neki blok i tako izmenjen lanac prosledio dalje u mrežu
+ostali čvorovi bi lako videli da je blok izmenjen na sledeći način:\\
+Neka je redosled blokova $b_0,b_1,...,b_n$ i neka je pokušana izmena na bloku $i$ i on je izmenjen u novi blok $x$:
+$b_0,b_1,...,b_{i-1},x,b_{i+1},...,b_n$.
+Uz svaki blok $j$ je sačuvana heš vrednost $h_j$. Kada neki čvor dobije novi lanac blokova i njihove heš vrednosti vrši se verifikacija
+tako što čvor ponovo sračuna heš vrednosti blokova. Neka je heš funkcija $f$, onda se heš bloka $j$ računa kao
+$h_j = f(h_{j-1},b_j)$. Dakle na izmenjenom lancu bi bilo $h'_{i+1} = f(x,b_{i+1})$. Kako je blok $x \neq b_i$ jasno je
+da je $f(x,b_{i+1}) \neq f(b_{i},b_{i+1})$ (tj. novosračunata vrednost $h'_{i+1}$ će se razlikovati od dobijene vrednosti $h_{i+1}$).
+Slično je i za vrednosti $h'_{i+2},h'_{i+3},...h'_{n}$ - kako je $h'_{i+1} \neq h_{i+1}$ onda će se i ostale vrednosti razlikovati.\\
+Ovako je detektovana modifikacija na bloku $i$ i utvrđeno je da je lanac nevalidan.
+Kako bi neko uspeo da izmeni jedan blok u lancu neophodno je da izmeni i ostale blokove i ponovo sračuna
+heš vrednosti kako bi dobio validan blokčejn. 
 
 \subsection{Decentralizacija}
+Umesto jednog centralnog autoriteta poput servera ili banke blokčejn koristi decentralizovanu, distribuiranu mrežu
+koja funkcioniše na "peer-to-peer" osnovi. "Peer-to-peer" komunikacija podrazumeva da se čvorovi u mreži ponašaju
+kao server i kao klijent, odnosno drugi čvorovi mogu tražiti podatke od njih, a i oni mogu tražiti podatke od drugih čvorova u mreži.
+Glavni izazov pri implementaciji distribuirane baze podataka je kome verovati da ima ispravnu verziju podataka -
+kako osigurati da mreža funkcioniše iako postoje čvorovi koji žele namerno da lažiraju podatke
+u svoju koristi ili ako postoje čvorovi koji ne funkcionišu ispravno. Suštinski, pitanje je kako da
+"pošteni" čvorovi dostignu koncenzus iako deo mreže ne sarađuje. Ovaj problem se često naziva "problem vizantijskih generala" (eng. Byzantine generals problem).
+Blokčejnovi najčešće koriste digitalne potpise zajedno sa algoritmom za postizanje koncenzusa poput "proof of work", "proof of stake" ili slično.
+Čime se postiže otpornost mreže čak do 50\% nekooperativnih čvorova.
+"Proof of work" mehanizam funkcioniše tako što pri kreaciji bloka član mreže mora da uloži značajnu računarsku
+moć kako bi rešio težak algoritamski problem. Na primer u Bitcoin blokčejnu pri kreaciji novog bloga se vrše sledeći koraci:
+\begin{enumerate}
+    \item Prikupljaju se transakcije koje će biti u novom bloku
+    \item Inicijalizuje se ''nonce'' vrednost na 0
+    \item Računa se heš vrednost transakcija koje treba staviti u blok, heš vrednosti prethodnog bloka i nonce vrednosti
+    \item Ukoliko tako dobijena heš vrednost počinje sa $k$ nula, blok je validan i čvor ga prosleđuje ostatku mreže.
+    \item Inače uvećava se nonce vrednost za jedan i ponavo se računa heš vrednost dok se ne dobije $k$ nula na početku.
+\end{enumerate}
+
 \todo{Napisati ovaj subsection - opisati kako blokčejn koristi peer to peer mrežu, sa konkretnim primerom (na primer kako bitkojn radi broadcast ili šta već), prednosti i mane decentralizacije generalno - double spending ako neko ima preko 51\%, itd. }
 
 \section{Primene}
