@@ -140,7 +140,21 @@ Ovaj problem je rešen upravo upotrebom blokčejna, time što celu istoriju tran
 proof-of-work sistemom možemo osigurati koncenzus između korisnika o tome koja istorija transakcija je aktuelna. 
 
 \subsection{Pametni ugovori}
-\todo{Napisati ovaj subsection - pomenuti eth pošto btc nije turing complete}
+Nakon bitkoina primećen je mnogo opštiji način upotrebe blokčejn tehnologije.
+Posmatrajmo bitkoin protokol apstraktnije: kao sistem prelaska iz jednog stanja vlasništva novca u drugo.
+Na primeru sa dijagrama \ref{fig:state_diagram}, ukoliko imamo osobe $A$, $B$ i $C$ sa $3$, $6$ i $5$ bitkoina, ovo možemo predstaviti kao trenutno stanje.
+Ukoliko se izvrši transakcija gde osoba $A$ pošalje $2$ bitkoina osobi $B$, što bi predstavljalo neku funkciju izmene stanja $T(A, B, 2)$, dolazimo u novo stanje gde osoba $A$ ima $2$ manje, a osoba $B$ $2$ više bitkoina nego u prethodnom.
+
+\begin{figure}[H]
+    \centering
+        \includegraphics[scale=0.6]{State_Transition.pdf}
+    \caption{Promena stanja transkacijom}
+    \label{fig:state_diagram}
+\end{figure}
+
+
+Posmatrajući protokol na ovaj način, jasno je da nema razloga ograničiti se na specifična stanja i funkciju izmene stanja kao što je ovde slučaj, već da ona mogu opisivati bilo koji željeni proces.
+Po ovom principu su nastali takozvani \textbf{pametni ugovori}.
 
 \section{Zaključak}
 \todo{Napisati ovaj subsection}
