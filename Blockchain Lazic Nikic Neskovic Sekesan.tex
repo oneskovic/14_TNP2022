@@ -164,7 +164,18 @@ Da bi se izbeglo to da je potrebno verovati sistemu da će ispravno izvršiti od
 Danas sa pojavom Ethereum mreže se pojam pametnog ugovora uglavnom vezuje za bilo koji automatski proces koji se izvršava na blokčejnu.
 Ideja Ethereum protokola je da omogući decentralizovano izvršavanje bilo kakvog datog programa. Ovo se postiže različitim izmenama klasičnog bitkoin protokola.
 Glavna novina je što svaki "digitalni novčanik" uz svoju jedinstvenu adresu kao što je kod bitkoina takođe može imati memoriju i izvršivi kod u okviru sebe, nalik na prethodno opisano stanje i funkciju izmene stanja.
-Kod tj. izmena stanja se izvršava tako što se u transakcijama mogu dodati podaci koji predstavljaju ulazne vrednosti za taj proces.
+Kod tj. izmena stanja se izvršava tako što se u transakcijama mogu dodati podaci koji predstavljaju ulazne vrednosti za taj proces (slika \ref{fig:ethereum_state_transition}).
+
+\begin{figure}[H]
+    \centering
+        \includegraphics[scale=0.8]{Ethereum_State_Transition.pdf}
+    \caption{Promena stanja na Ethereum blokčejnu}
+    \label{fig:ethereum_state_transition}
+\end{figure}
+
+Prilikom validacije blokova u ovako izmenjenom blokčejnu moguće je za svaku transakciju sa ulaznim podacima izvršiti odgovarajući kod naloga. Radeći ovo za svaki blok u najdužem lancu, dolazi se do krajnjeg decentralizovanog globalnog stanja za koji znamo da postoji koncenzus zbog ranije pomenutih svojstava blokčejna.
+
+
 
 \section{Zaključak}
 \todo{Napisati ovaj subsection}
