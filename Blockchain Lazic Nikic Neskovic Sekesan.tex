@@ -119,7 +119,25 @@ moć kako bi rešio težak algoritamski problem. Na primer u Bitcoin blokčejnu 
 \label{sec:primene}
 
 \subsection{Kriptovalute}
-\todo{Napisati ovaj subsection}
+Ubedljivo najpoznatija primena blokčejn tehnologije, zbog koje je glavno i nastala, je u domenu digitalnih valuta.
+Ideja decentralizacije valute posebno je primamljiva u svetu finansija jer se odbacuje potreba za poverenjem
+u centralni autoritet kao što su banke ili državne vlade da bi se vrednost valute održala. 
+Prva implementirana decentralizovana digitalna valuta - kriptovaluta koja je zasnovana na blokčejnu jeste čuveni Bitkoin.
+
+Bitkoin u osnovi radi na principu transakcija - prenosa novca sa jednog na drugi "digitalni novčanik". Da bi sistem funkcionisao
+kao valuta, potrebno je da se vlasništvo novca koji se šalje može utvrditi. Ovo se postiže digitalnim potpisivanjem svake transakcije
+asimetričnom kriptografijom.
+
+\begin{figure}[H]
+    \centering
+        \includegraphics[scale=0.8]{Bitcoin_Transaction_Visual.pdf}
+    \caption{Transfer bitkoina}
+    \label{fig:btc_transfer}
+\end{figure}
+
+Takođe je potrebno osigurati da se isti novac ne može potrošiti dva puta (eng. double spending problem).
+Ovaj problem je rešen upravo upotrebom blokčejna, time što celu istoriju transakcija možemo smestiti i grupisati u pojedinačne blokove, a
+proof-of-work sistemom možemo osigurati koncenzus između korisnika o tome koja istorija transakcija je aktuelna. 
 
 \subsection{Pametni ugovori}
 \todo{Napisati ovaj subsection - pomenuti eth pošto btc nije turing complete}
