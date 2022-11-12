@@ -94,16 +94,17 @@ Kako bi neko uspeo da izmeni jedan blok u lancu neophodno je da izmeni i ostale 
 heš vrednosti kako bi dobio validan blokčejn. 
 
 \subsection{Decentralizacija}
+
 Umesto jednog centralnog autoriteta poput servera ili banke blokčejn koristi decentralizovanu, distribuiranu mrežu
 koja funkcioniše na "peer-to-peer" osnovi. "Peer-to-peer" komunikacija podrazumeva da se čvorovi u mreži ponašaju
 kao server i kao klijent, odnosno drugi čvorovi mogu tražiti podatke od njih, a i oni mogu tražiti podatke od drugih čvorova u mreži.
 Glavni izazov pri implementaciji distribuirane baze podataka je kome verovati da ima ispravnu verziju podataka -
 kako osigurati da mreža funkcioniše iako postoje čvorovi koji žele namerno da lažiraju podatke
 u svoju koristi ili ako postoje čvorovi koji ne funkcionišu ispravno. Suštinski, pitanje je kako da
-"pošteni" čvorovi dostignu koncenzus iako deo mreže ne sarađuje. Ovaj problem se često naziva "problem vizantijskih generala" (eng. Byzantine generals problem).
-Blokčejnovi najčešće koriste digitalne potpise zajedno sa algoritmom za postizanje koncenzusa poput "proof of work", "proof of stake" ili slično.
+''pošteni'' čvorovi dostignu koncenzus iako deo mreže ne sarađuje. Ovaj problem se često naziva ''problem vizantijskih generala'' (eng. Byzantine generals problem).
+Blokčejnovi najčešće koriste digitalne potpise zajedno sa algoritmom za postizanje koncenzusa poput ''proof of work'', ''proof of stake'' ili slično.
 Čime se postiže otpornost mreže čak do 50\% nekooperativnih čvorova.
-"Proof of work" mehanizam funkcioniše tako što pri kreaciji bloka član mreže mora da uloži značajnu računarsku
+''Proof of work'' mehanizam funkcioniše tako što pri kreaciji bloka član mreže mora da uloži značajnu računarsku
 moć kako bi rešio težak algoritamski problem. Na primer u Bitcoin blokčejnu pri kreaciji novog bloga se vrše sledeći koraci:
 \begin{enumerate}
     \item Prikupljaju se transakcije koje će biti u novom bloku
@@ -112,8 +113,39 @@ moć kako bi rešio težak algoritamski problem. Na primer u Bitcoin blokčejnu 
     \item Ukoliko tako dobijena heš vrednost počinje sa $k$ nula, blok je validan i čvor ga prosleđuje ostatku mreže.
     \item Inače uvećava se nonce vrednost za jedan i ponavo se računa heš vrednost dok se ne dobije $k$ nula na početku.
 \end{enumerate}
+Veruje se da se izlaz neke kriptografske heš funkcije ne može lako invertovati te se veruje da ne postoji
+efikasniji način od probanja velikog broja nonce vrednosti i ponovnog računanja heš vrednosti dok se
+ne dobije $k$ nula na početku.
+Vrednost $k$ se može povećavati i time postaje teže napraviti blok (što je poželjno kada mreža dovoljno poraste).\\
+Iako neverovatno moguće je da se dva validna bloka kreiraju u slično vreme, ovo se naziva privremeno grananje blokčejna (''fork'').
+Ukoliko čvor primi blokčejn gde je došlo do grananja nastavlja sa kreacijom blokova samo odlučuje na koju granu će nadovezati sledeći blok.
+Kada se neka od grana produži novi blokčejn se oglašava mreži. U protokolu svakog blokčejna ugrađen je mehanizam kojim se razrešavaju grananja,
+najčešće se prihvata ona grana koja sadrži najviše blokova, a preostala grana se odbacuje.
 
-\todo{Napisati ovaj subsection - opisati kako blokčejn koristi peer to peer mrežu, sa konkretnim primerom (na primer kako bitkojn radi broadcast ili šta već), prednosti i mane decentralizacije generalno - double spending ako neko ima preko 51\%, itd. }
+\begin{figure}[H]
+    \centering
+        \includegraphics[scale=0.7,angle=-90,origin=c]{blockchain_fork.pdf}
+    \caption{Grananje u blokčejnu}
+    \label{fig:blockchain_fork}
+\end{figure}
+
+Na slici \ref{fig:blockchain_fork} je prikazan primer grananja u blokčejnu. Crni blokovi predstavljaju aktuelni lanac,
+a ljubičasti blokovi predstavljaju bočne lance koji su eventualno odbačeni.\\
+U kreaciji blokova najčešće ne učestvuju svi članovi mreže, već u slučaju ''proof of work'' mehanizma neki čvorovi biraju
+da se bave isključivo kreacijom blokova - ti čvorovi se nazivaju ''mineri''. U slučaju kriptovaluta mineri imaju inicijativu
+da kreiraju blokove zato što bivaju nagrađeni nakon uspešne kreacije bloka.\\ 
+Digitalni potpisi, način povezivanja blokova u lanac pomoću kriptografskih heš funkcija i mehanizam za dostizanje
+koncenzusa u prisustvu nekooperativnih čvorova čine blokčejn pouzdanim načinom za čuvanje i upravljanje deljenom bazom podataka.
+Jedan od najpoznatijih načina da se blokčejn ipak prevari je ukoliko napadač uspe da obezbedi 51\% mreže
+(tj. više nego što je potrebno za dostizanje koncenzusa). Ukoliko ovo uspe napadač može cenzurisati modifikacije blokčejna
+ili u slučaju kriptovaluta efektivno trošiti isti novac više puta. Napadač ne može praviti ilegalne
+izmene na blokčejnu - na primer čak iako upravlja 51\% mreže to mu ne omogućava da lažira nečiji digitalni potpis
+ili doda nevalidnu transakciju u blok. Ako pokuša i ipak kreira nevalidan blok, zbog toga što napadač poseduje
+većinu mreže on će moći da nastavi da održava najduži lanac sa nevalidnim blokovima. Ostali učesnici
+mogu lako da detektuju da je blokčejn postao nevalidan i da prestanu da ga koriste, što nije u interesu napadača.
+Iako ne može vršiti nevalidne izmene na blokčejnu napadač može odlučiti da neke izmene cenzuriše.
+Pošto napadač može da kreira svaki blok na lancu brže nego ostatak mreže on efektivno odlučuje koje izmene
+će biti uključene u lanac, a koje ne.
 
 \section{Primene}
 \label{sec:primene}
