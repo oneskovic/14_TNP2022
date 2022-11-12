@@ -50,7 +50,21 @@ U radu su sažeto iznete osnove kriptografije potrebne za razumevanje i implemen
 \label{sec:kriptografske_osnove}
 
 \subsection{Kriptografske heš funkcije}
-\todo{Napisati ovaj subsection}
+Heš funkcije su funkcije koje preslikavaju niz karaktera (u daljem tekstu poruku) proizvoljne dužine u niz karaktera fiksne dužine (u daljem tekstu heš vrednost). Osnovne osobine heš funkcije su:
+\begin{itemize}
+\item Heš vrednost poruke je brzo izračunljiva.
+\item Kako heš funkcija preslikava poruku proizvoljne dužine u heš vrednost fiksne dužine poruka je najčešće značajno veća od heš vrednosti, pa se ova funkcija naziva i funkcija sažimanja (eng. 'compression function').
+\item Heš funkcija za datu poruku uvek daje istu heš vrednost.
+\end{itemize}
+Da bi heš funkcija bila efektivna u kriptografiji treba da zadovoljava sledeće uslove:
+\begin{itemize}
+\item Za datu heš vrednost treba da bude praktično nemoguće naći poruku čija je ona vrednost.
+\item Za datu poruku treba da bude praktično nemoguće naći drugu poruku koja ima istu heš vrednost.
+\item Nalaženje dve poruke koje imaju istu heš vrednost treba da bude praktično nemoguće. 
+\item Bilo kakve male promene u poruci treba da rezultiraju u većim promenama u heš vrednosti, tolike da je nemoguće povezati sa originalnom heš vrednošću, poznato kao 'avalanche effect'.
+\end{itemize}
+\\ Kako radi heš funkcija? Sledi algoritam za heširanje:\\
+Početna poruka podeljena je na više blokova. Najčešće veličina jednog bloka je između 128 i 512 bitova. Algoritam za heširanje se sastoji od ponavljanja algoritma heširanja na jednom bloku za svaki blok. Svako ponavljanje sastoji se od ulaza fiksne dužine, koji se najčešće sastoji od dela poruke za taj blok i heš vrednosti prethodnog bloka. Kako heš vrednost svakog bloka zavisi od heš vrednosti prethodnog, lako dolazi do ranije pomenutog 'avalance effect' -a, gde veoma slične poruke imaju potpuno različitu heš vrednost.
 
 \subsection{Asimetrična kriptografija}
 \todo{Napisati ovaj subsection}
