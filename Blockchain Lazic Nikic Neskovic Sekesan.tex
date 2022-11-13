@@ -67,19 +67,7 @@ Da bi heš funkcija bila efektivna u kriptografiji treba da zadovoljava sledeće
 Početna poruka podeljena je na više blokova. Najčešće veličina jednog bloka je između 128 i 512 bitova. Algoritam za heširanje se sastoji od ponavljanja algoritma heširanja na jednom bloku za svaki blok. Svako ponavljanje sastoji se od ulaza fiksne dužine, koji se najčešće sastoji od dela poruke za taj blok i heš vrednosti prethodnog bloka. Kako heš vrednost svakog bloka zavisi od heš vrednosti prethodnog, lako dolazi do ranije pomenutog 'avalance effect' -a, gde veoma slične poruke imaju potpuno različitu heš vrednost.
 
 \subsection{Asimetrična kriptografija}
-Asimetrična kriptografija je polje kriptografije u kome se koriste parovi ključeva. Svaki par se sastoji od jednog javnog ključa i odgovarajućeg privatnog ključa. Javni ključ je dostupan svima i od njega ne zavisi sigurnost, dok privatni ključ mora ostati privatan. Svako ko ima javni ključ može njime enkriptovati poruku, ali samo onaj ko ima privatni ključ može da je dekriptuje i dobije originalnu poruku. \\
-Slično rade sistemi digitalnih potpisa. Autor potpisa kreira potpis tako što poruku enkriptuje privatnim ključem i objavljuje ga. Bilo ko ko ima odgovarajuć javni ključ može da dekriptuje poruku i na taj način potvrdi da li potpis stvarno pripada njegovom autoru, ali kako niko sem autora nema privatni ključ niko sem njega neće moći da kreira potpis koji će proći verifikaciju javnim ključem. \\
-Jedan od primera digitalnog potpisa je baziran na RSA algoritmu. Algoritam je sledeći:
-\begin{enumerate}   
-    \item Nasumično su generisana dva velika prosta broja $p$ i $q$.
-    \item Izračunat je proizvod $n = pq$.
-    \item Izračunata je Ojlerova funkcija $\phi(n)=(p - 1)(q - 1)$, odnosno broj uzajamno prostih brojeva sa $n$ koji su manji od njega.
-    \item  Odabran je nasumičan prirodan broj $e$ takav da je $1 < e < \phi(n)$.
-    \item Izračunat je broj $d$ takav da je $de \equiv 1$ (mod $\phi(n)$).
-    \item Javni ključ čine brojevi $n$ i $e$, a privatni broj $d$. \\
-\end{enumerate}
-Zatim kada imamo poruku $m$, autor potpisa kreira potpis tako da je kongruentan $m^{d}$ po modulu $n$, odnosno $\sigma \equiv m^{d}$ (mod $n$). Bilo ko ko ima javni ključ može da proveri da li je  ${\sigma}^{e} \equiv m$ (mod $n$) i time verifikuje ispravnost potpisa.
-
+\todo{Napisati ovaj subsection}
 
 \section{Blokčejn}
 \label{sec:blockchain}
