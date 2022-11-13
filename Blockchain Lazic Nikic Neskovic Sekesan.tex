@@ -25,7 +25,7 @@
     \texttt{kontakt email adresa autora}
     \and
     Nikić, Ognjen\\ 
-    \texttt{kontakt email adresa autora}
+    \texttt{mi22222@alas.matf.bg.ac.rs}
     \and
     Nešković, Ognjen\\ 
     \texttt{mi22009@alas.matf.bg.ac.rs}
@@ -67,7 +67,19 @@ Da bi heš funkcija bila efektivna u kriptografiji treba da zadovoljava sledeće
 Početna poruka podeljena je na više blokova. Najčešće veličina jednog bloka je između 128 i 512 bitova. Algoritam za heširanje se sastoji od ponavljanja algoritma heširanja na jednom bloku za svaki blok. Svako ponavljanje sastoji se od ulaza fiksne dužine, koji se najčešće sastoji od dela poruke za taj blok i heš vrednosti prethodnog bloka. Kako heš vrednost svakog bloka zavisi od heš vrednosti prethodnog, lako dolazi do ranije pomenutog 'avalance effect' -a, gde veoma slične poruke imaju potpuno različitu heš vrednost.
 
 \subsection{Asimetrična kriptografija}
-\todo{Napisati ovaj subsection}
+Asimetrična kriptografija je polje kriptografije u kome se koriste parovi ključeva. Svaki par se sastoji od jednog javnog ključa i odgovarajućeg privatnog ključa. Javni ključ je dostupan svima i od njega ne zavisi sigurnost, dok privatni ključ mora ostati privatan. Svako ko ima javni ključ može njime enkriptovati poruku, ali samo onaj ko ima privatni ključ može da je dekriptuje i dobije originalnu poruku. \\
+Slično rade sistemi digitalnih potpisa. Autor potpisa kreira potpis tako što poruku enkriptuje privatnim ključem i objavljuje ga. Bilo ko ko ima odgovarajuć javni ključ može da dekriptuje poruku i na taj način potvrdi da li potpis stvarno pripada njegovom autoru, ali kako niko sem autora nema privatni ključ niko sem njega neće moći da kreira potpis koji će proći verifikaciju javnim ključem. \\
+Jedan od primera digitalnog potpisa je baziran na RSA algoritmu. Algoritam je sledeći:
+\begin{enumerate}   
+    \item Nasumično su generisana dva velika prosta broja $p$ i $q$.
+    \item Izračunat je proizvod $n = pq$.
+    \item Izračunata je Ojlerova funkcija $\phi(n)=(p - 1)(q - 1)$, odnosno broj uzajamno prostih brojeva sa $n$ koji su manji od njega.
+    \item  Odabran je nasumičan prirodan broj $e$ takav da je $1 < e < \phi(n)$.
+    \item Izračunat je broj $d$ takav da je $de \equiv 1$ (mod $\phi(n)$).
+    \item Javni ključ čine brojevi $n$ i $e$, a privatni broj $d$. \\
+\end{enumerate}
+Zatim kada imamo poruku $m$, autor potpisa kreira potpis tako da je kongruentan $m^{d}$ po modulu $n$, odnosno $\sigma \equiv m^{d}$ (mod $n$). Bilo ko ko ima javni ključ može da proveri da li je  ${\sigma}^{e} \equiv m$ (mod $n$) i time verifikuje ispravnost potpisa.
+
 
 \section{Blokčejn}
 \label{sec:blockchain}
@@ -224,7 +236,23 @@ Prilikom validacije blokova u ovako izmenjenom blokčejnu moguće je za svaku tr
 
 
 \section{Zaključak}
-\todo{Napisati ovaj subsection}
+\label{sec:zakljucak}
+Pomoću raznih koncepta poput kriptografskih heš funkcija, digitalnih potpisa i merkle stabla, blokčejn je omogućio uspostavljanje kriptovaluta, sistema digitalnih transakcija koje se ne zasnivaju na poverenju i kojima ne treba centralni autoritet da bi održale vrednost. Kriptovalute takođe eliminišu 'double spending'' problem digitalnim potpisima i jako su otporne na druge vrste zloupotrebe sistema zbog ''proof of work'' i ''proof of stake'' modela. Najpoznatija i prva implementirana kriptovaluta je Bitcoin. Osim kriptovaluta, blokčejn je takođe omogućio nastanak pametnih ugovora, koji omogućavaju izvršavanje ugovora bez ljudske interakcije.
+
+\subsection{Problem potrošnje struje}
+Uprkos benefitima postojanja digitalne valute koja ne zahteva verovanje centralnim autoritetima, veliku zabrinutost uzrokuje visoka potrošnja struje kriptovaluta koje koriste mehanizam ''proof of work''.
+
+Juna 2018. Banka za međunarodna poravnanja je kritikovala korišćenje javnih ''proof of work'' blokčejnova zbog njihove visoke potrošnje struje. \cite{shin2018chapterVcryptocurrencies}
+Jedna studija Univerziteta u Kembridžu iz 2021. je utvrdila da bitkojn (sa 121 teravat-časa godišnje) koristi više struje nego Argentina (sa 121 teravat-časa godišnje) i Holandija (sa 109 teravat-časa godišnje). \cite{criddle2021bitcoin-electricity}
+
+Zbog ovog problema neke blokčejn platforme poput Cardano (2017), Solana (2020) i Polkadot (2020) koriste ''proof of stake'' model koji troši dosta manje struje nego ''proof of work'' model.
+
+\subsection{Akademska istraživanja}
+Dosta univerziteta je zasnovalo odseke sa fokusom na istraživanju blokčejna i kriptovaluta, uključujući i MIT, koji je to uradio 2017. godine.
+
+Između ostalog, istraživana je i uloga blokčejna u podržavanju saradnje između ljudi. \cite{teppo2018mitmenagmentrewiew} Zbog svoje transparentnosti, pouzdanosti i lako dostupnih zapisa, blokčejnovi podstiču saradjnu bolje od običnih ugovora i relacionih normi. Za razliku od ugovora, blokčejn ne zahteva pravni sistem da sprovede stavke ugovora i za razliku od relacionih normi, blokčejnu nije neophodno poverenje niti poznavanje između saradnika.
+
+U septembru 2015. godine je najavljen prvi akademski žurnal posvećen blokčejnu i kriptovalutama, \emph{Ledger}. Prvo izdanje je objavljeno decembra 2016. godine. Taj žurnal se fokusirao na matematiku, informatiku, inžinjerstvo, pravo, ekonomiju i filozofiju vezanu sa kriptovalutama.
 
 \addcontentsline{toc}{section}{Literatura}
 \appendix
