@@ -44,7 +44,31 @@ U radu su sažeto iznete osnove kriptografije potrebne za razumevanje i implemen
 
 \section{Uvod}
 \label{sec:uvod}
-\todo{Napisati uvod - ukratko nešto o istoriji blokčejna, čemu služi, zašto je koristan, pomenuti osnovne ideje koje se koriste (heširanje, merkle stabla, asimetrična kriptografija (digitalni potpisi) itd.)}
+Od davnina postojala je potreba da se dokumenti obezbede tako da se njihova autentičnost 
+može utvrditi. Na primer ako želimo da pošaljemo pismo i da primalac zna da li je ono 
+otvarano pre nego što mu je dostavljeno, ako je potrebno utvrditi da li je neko zaista 
+potpisao neki ugovor ili da je neki dokument objavljen u određeno vreme (što je značajno
+u slučaju autorskih prava gde je potrebno utvrditi ko je nešto prvo objavio).
+U ove svrhe su se koristile razne metode fizičke zaštite koje su donekle aktuelne i danas -
+još su rimljani koristili voštane žigove kako bi zapečatili pisma, modernije metode uključuju
+pečate, holograme ili naprednije materijale koji bi pokazali da li je dokument otvaran.\\
+Kako bi se osigurali da je dokument napravljen u trenutku koji autor tvrdi možemo se osloniti
+na neki centralni autoritet u koji svi imaju poverenja kao što je slučaj, na primer, kod registara patenata.
+Alternativno moguće je koristiti neku metodu koja ne zahteva centralni autoritet već samo
+javno objavljivanje. Na primer kada je Robert Huk otkrio zakon za opruge objavio je samo anagram
+'ceiiinosssttuv' kako bi kasnije objavio izvornu formulaciju 'ut tensio sic vis' (koliko istezanje tolika i sila).
+Da je neko objavio isti rezultat između vremena kada je objavljen anagram i vremena kada je objavljen prevod
+Huk je mogao da dokaže da je on prvi znao za ovaj zakon kako je javno objavio anagram.\\
+Iako je moguće lažirati pečate ili pažljivo otvoriti dokument tako da se izbegne fizička zaštita
+uglavnom je ovo nepraktično i često zahteva previše vremena od napadača kako bi bilo isplativo.
+Međutim u digitalnom svetu proizvodnja identičnih kopija pa tako i lažiranje dokumenata je trivijalno.
+Problem autentičnosti je efektivno rešen kriptografijom i digitalnim potpisima.
+Kako bi se utvrdilo da je digitalni dokument objavljen u nekom trenutku moguće je takođe verovati
+centralnom autoritetu kao što je slučaj kod digitalnih sertifikata za veb-sajtove ili je ipak moguće
+ovo postići bez centralnog autoriteta. Najčešće se ovo postiže ''ulančavanjem'' kriptografskih heš vrednosti
+dokumenata i širokim objavljivanjem ovog lanca.\\
+Blokčejn spaja tehnologije digitalnih potpisa i metode za utvrđivanje hronologije izmena čime
+se formira poverljiv javni skup podataka.
 
 \section{Kriptografske osnove}	
 \label{sec:kriptografske_osnove}
