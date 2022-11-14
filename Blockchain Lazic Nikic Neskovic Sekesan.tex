@@ -51,14 +51,16 @@ potpisao neki ugovor ili da je neki dokument objavljen u određeno vreme (što j
 u slučaju autorskih prava gde je potrebno utvrditi ko je nešto prvo objavio).
 U ove svrhe su se koristile razne metode fizičke zaštite koje su donekle aktuelne i danas -
 još su rimljani koristili voštane žigove kako bi zapečatili pisma, modernije metode uključuju
-pečate, holograme ili naprednije materijale koji bi pokazali da li je dokument otvaran.\\
+pečate, holograme ili naprednije materijale koji bi pokazali da li je dokument otvaran.
+
 Kako bi se osigurali da je dokument napravljen u trenutku koji autor tvrdi možemo se osloniti
 na neki centralni autoritet u koji svi imaju poverenja kao što je slučaj, na primer, kod registara patenata.
 Alternativno moguće je koristiti neku metodu koja ne zahteva centralni autoritet već samo
 javno objavljivanje. Na primer kada je Robert Huk otkrio zakon za opruge objavio je samo anagram
-'ceiiinosssttuv' kako bi kasnije objavio izvornu formulaciju 'ut tensio sic vis' (koliko istezanje tolika i sila).
+''ceiiinosssttuv'' kako bi kasnije objavio izvornu formulaciju ''ut tensio sic vis'' (koliko istezanje tolika i sila).
 Da je neko objavio isti rezultat između vremena kada je objavljen anagram i vremena kada je objavljen prevod
-Huk je mogao da dokaže da je on prvi znao za ovaj zakon kako je javno objavio anagram.\\
+Huk je mogao da dokaže da je on prvi znao za ovaj zakon kako je javno objavio anagram.
+
 Iako je moguće lažirati pečate ili pažljivo otvoriti dokument tako da se izbegne fizička zaštita
 uglavnom je ovo nepraktično i često zahteva previše vremena od napadača kako bi bilo isplativo.
 Međutim u digitalnom svetu proizvodnja identičnih kopija pa tako i lažiranje dokumenata je trivijalno.
@@ -66,7 +68,8 @@ Problem autentičnosti je efektivno rešen kriptografijom i digitalnim potpisima
 Kako bi se utvrdilo da je digitalni dokument objavljen u nekom trenutku moguće je takođe verovati
 centralnom autoritetu kao što je slučaj kod digitalnih sertifikata za veb-sajtove ili je ipak moguće
 ovo postići bez centralnog autoriteta. Najčešće se ovo postiže ''ulančavanjem'' kriptografskih heš vrednosti
-dokumenata i širokim objavljivanjem ovog lanca.\\
+dokumenata i širokim objavljivanjem ovog lanca.
+
 Blokčejn spaja tehnologije digitalnih potpisa i metode za utvrđivanje hronologije izmena čime
 se formira poverljiv javni skup podataka.
 
@@ -80,19 +83,22 @@ Heš funkcije su funkcije koje preslikavaju niz karaktera (u daljem tekstu poruk
 \item Kako heš funkcija preslikava poruku proizvoljne dužine u heš vrednost fiksne dužine poruka je najčešće značajno veća od heš vrednosti, pa se ova funkcija naziva i funkcija sažimanja (eng. 'compression function').
 \item Heš funkcija za datu poruku uvek daje istu heš vrednost.
 \end{itemize}
+
 Da bi heš funkcija bila efektivna u kriptografiji treba da zadovoljava sledeće uslove:
 \begin{itemize}
 \item Za datu heš vrednost treba da bude praktično nemoguće naći poruku čija je ona vrednost.
 \item Za datu poruku treba da bude praktično nemoguće naći drugu poruku koja ima istu heš vrednost.
 \item Nalaženje dve poruke koje imaju istu heš vrednost treba da bude praktično nemoguće. 
-\item Bilo kakve male promene u poruci treba da rezultiraju u većim promenama u heš vrednosti, tolike da je nemoguće povezati sa originalnom heš vrednošću, poznato kao 'avalanche effect'.
+\item Bilo kakve male promene u poruci treba da rezultiraju u većim promenama u heš vrednosti, tolike da je nemoguće povezati sa originalnom heš vrednošću, poznato kao ''avalanche effect''.
 \end{itemize}
-Kako radi heš funkcija? Sledi algoritam za heširanje:\\
-Početna poruka podeljena je na više blokova. Najčešće veličina jednog bloka je između 128 i 512 bitova. Algoritam za heširanje se sastoji od ponavljanja algoritma heširanja na jednom bloku za svaki blok. Svako ponavljanje sastoji se od ulaza fiksne dužine, koji se najčešće sastoji od dela poruke za taj blok i heš vrednosti prethodnog bloka. Kako heš vrednost svakog bloka zavisi od heš vrednosti prethodnog, lako dolazi do ranije pomenutog 'avalance effect' -a, gde veoma slične poruke imaju potpuno različitu heš vrednost.
+
+Sledi algoritam za heširanje: početna poruka podeljena je na više blokova. Najčešće veličina jednog bloka je između 128 i 512 bitova. Algoritam za heširanje se sastoji od ponavljanja algoritma heširanja na jednom bloku za svaki blok. Svako ponavljanje sastoji se od ulaza fiksne dužine, koji se najčešće sastoji od dela poruke za taj blok i heš vrednosti prethodnog bloka. Kako heš vrednost svakog bloka zavisi od heš vrednosti prethodnog, lako dolazi do ranije pomenutog ''avalanche effect'' -a, gde veoma slične poruke imaju potpuno različitu heš vrednost.
 
 \subsection{Asimetrična kriptografija}
-Asimetrična kriptografija je polje kriptografije u kome se koriste parovi ključeva. Svaki par se sastoji od jednog javnog ključa i odgovarajućeg privatnog ključa. Javni ključ je dostupan svima i od njega ne zavisi sigurnost, dok privatni ključ mora ostati privatan. Svako ko ima javni ključ može njime enkriptovati poruku, ali samo onaj ko ima privatni ključ može da je dekriptuje i dobije originalnu poruku. \\
-Slično rade sistemi digitalnih potpisa. Autor potpisa kreira potpis tako što poruku enkriptuje privatnim ključem i objavljuje ga. Bilo ko ko ima odgovarajuć javni ključ može da dekriptuje poruku i na taj način potvrdi da li potpis stvarno pripada njegovom autoru, ali kako niko sem autora nema privatni ključ niko sem njega neće moći da kreira potpis koji će proći verifikaciju javnim ključem. \\
+Asimetrična kriptografija je polje kriptografije u kome se koriste parovi ključeva. Svaki par se sastoji od jednog javnog ključa i odgovarajućeg privatnog ključa. Javni ključ je dostupan svima i od njega ne zavisi sigurnost, dok privatni ključ mora ostati privatan. Svako ko ima javni ključ može njime enkriptovati poruku, ali samo onaj ko ima privatni ključ može da je dekriptuje i dobije originalnu poruku. 
+
+Slično rade sistemi digitalnih potpisa. Autor potpisa kreira potpis tako što poruku enkriptuje privatnim ključem i objavljuje ga. Bilo ko ko ima odgovarajuć javni ključ može da dekriptuje poruku i na taj način potvrdi da li potpis stvarno pripada njegovom autoru, ali kako niko sem autora nema privatni ključ niko sem njega neće moći da kreira potpis koji će proći verifikaciju javnim ključem. 
+
 Jedan od primera digitalnog potpisa je baziran na RSA algoritmu. Algoritam je sledeći:
 \begin{enumerate}   
     \item Nasumično su generisana dva velika prosta broja $p$ i $q$.
@@ -100,8 +106,9 @@ Jedan od primera digitalnog potpisa je baziran na RSA algoritmu. Algoritam je sl
     \item Izračunata je Ojlerova funkcija $\phi(n)=(p - 1)(q - 1)$, odnosno broj uzajamno prostih brojeva sa $n$ koji su manji od njega.
     \item  Odabran je nasumičan prirodan broj $e$ takav da je $1 < e < \phi(n)$.
     \item Izračunat je broj $d$ takav da je $de \equiv 1$ (mod $\phi(n)$).
-    \item Javni ključ čine brojevi $n$ i $e$, a privatni broj $d$. \\
+    \item Javni ključ čine brojevi $n$ i $e$, a privatni broj $d$.
 \end{enumerate}
+
 Zatim kada imamo poruku $m$, autor potpisa kreira potpis tako da je kongruentan $m^{d}$ po modulu $n$, odnosno $\sigma \equiv m^{d}$ (mod $n$). Bilo ko ko ima javni ključ može da proveri da li je  ${\sigma}^{e} \equiv m$ (mod $n$) i time verifikuje ispravnost potpisa.
 
 
@@ -131,14 +138,14 @@ Blokovi su manji skupovi podataka koji se povezuju kako bi formirali krajnji lan
 Svaki blok sadrži heš (dobijen pomoću kriptografski bezbedne heš funkcije) prethodnog bloka.
 Ovim je uspostavljen redosled blokova u lancu. Dodatno modifikacija nekog bloka postaje znatno teža jer ukoliko
 bi neki čvor u distribuiranoj mreži izmenio neki blok i tako izmenjen lanac prosledio dalje u mrežu
-ostali čvorovi bi lako videli da je blok izmenjen na sledeći način:\\
-Neka je redosled blokova $b_0,b_1,...,b_n$ i neka je pokušana izmena na bloku $i$ i on je izmenjen u novi blok $x$:
+ostali čvorovi bi lako videli da je blok izmenjen na sledeći način: neka je redosled blokova $b_0,b_1,...,b_n$ i neka je pokušana izmena na bloku $i$ i on je izmenjen u novi blok $x$:
 $b_0,b_1,...,b_{i-1},x,b_{i+1},...,b_n$.
 Uz svaki blok $j$ je sačuvana heš vrednost $h_j$. Kada neki čvor dobije novi lanac blokova i njihove heš vrednosti vrši se verifikacija
 tako što čvor ponovo sračuna heš vrednosti blokova. Neka je heš funkcija $f$, onda se heš bloka $j$ računa kao
 $h_j = f(h_{j-1},b_j)$. Dakle na izmenjenom lancu bi bilo $h'_{i+1} = f(x,b_{i+1})$. Kako je blok $x \neq b_i$ jasno je
 da je $f(x,b_{i+1}) \neq f(b_{i},b_{i+1})$ (tj. novosračunata vrednost $h'_{i+1}$ će se razlikovati od dobijene vrednosti $h_{i+1}$).
-Slično je i za vrednosti $h'_{i+2},h'_{i+3},...h'_{n}$ - kako je $h'_{i+1} \neq h_{i+1}$ onda će se i ostale vrednosti razlikovati.\\
+Slično je i za vrednosti $h'_{i+2},h'_{i+3},...h'_{n}$ - kako je $h'_{i+1} \neq h_{i+1}$ onda će se i ostale vrednosti razlikovati.
+
 Ovako je detektovana modifikacija na bloku $i$ i utvrđeno je da je lanac nevalidan.
 Kako bi neko uspeo da izmeni jedan blok u lancu neophodno je da izmeni i ostale blokove i ponovo sračuna
 heš vrednosti kako bi dobio validan blokčejn. 
@@ -146,7 +153,7 @@ heš vrednosti kako bi dobio validan blokčejn.
 \subsection{Decentralizacija}
 
 Umesto jednog centralnog autoriteta poput servera ili banke blokčejn koristi decentralizovanu, distribuiranu mrežu
-koja funkcioniše na "peer-to-peer" osnovi. "Peer-to-peer" komunikacija podrazumeva da se čvorovi u mreži ponašaju
+koja funkcioniše na ''peer-to-peer'' osnovi. ''Peer-to-peer'' komunikacija podrazumeva da se čvorovi u mreži ponašaju
 kao server i kao klijent, odnosno drugi čvorovi mogu tražiti podatke od njih, a i oni mogu tražiti podatke od drugih čvorova u mreži.
 Glavni izazov pri implementaciji distribuirane baze podataka je kome verovati da ima ispravnu verziju podataka -
 kako osigurati da mreža funkcioniše iako postoje čvorovi koji žele namerno da lažiraju podatke
@@ -166,7 +173,8 @@ moć kako bi rešio težak algoritamski problem. Na primer u Bitcoin blokčejnu 
 Veruje se da se izlaz neke kriptografske heš funkcije ne može lako invertovati te se veruje da ne postoji
 efikasniji način od probanja velikog broja nonce vrednosti i ponovnog računanja heš vrednosti dok se
 ne dobije $k$ nula na početku.
-Vrednost $k$ se može povećavati i time postaje teže napraviti blok (što je poželjno kada mreža dovoljno poraste).\\
+Vrednost $k$ se može povećavati i time postaje teže napraviti blok (što je poželjno kada mreža dovoljno poraste).
+
 Iako neverovatno moguće je da se dva validna bloka kreiraju u slično vreme, ovo se naziva privremeno grananje blokčejna (''fork'').
 Ukoliko čvor primi blokčejn gde je došlo do grananja nastavlja sa kreacijom blokova samo odlučuje na koju granu će nadovezati sledeći blok.
 Kada se neka od grana produži novi blokčejn se oglašava mreži. U protokolu svakog blokčejna ugrađen je mehanizam kojim se razrešavaju grananja,
@@ -180,10 +188,12 @@ najčešće se prihvata ona grana koja sadrži najviše blokova, a preostala gra
 \end{figure}
 
 Na slici \ref{fig:blockchain_fork} je prikazan primer grananja u blokčejnu. Crni blokovi predstavljaju aktuelni lanac,
-a ljubičasti blokovi predstavljaju bočne lance koji su eventualno odbačeni.\\
+a ljubičasti blokovi predstavljaju bočne lance koji su eventualno odbačeni.
+
 U kreaciji blokova najčešće ne učestvuju svi članovi mreže, već u slučaju ''proof of work'' mehanizma neki čvorovi biraju
 da se bave isključivo kreacijom blokova - ti čvorovi se nazivaju ''mineri''. U slučaju kriptovaluta mineri imaju inicijativu
-da kreiraju blokove zato što bivaju nagrađeni nakon uspešne kreacije bloka.\\ 
+da kreiraju blokove zato što bivaju nagrađeni nakon uspešne kreacije bloka.
+ 
 Digitalni potpisi, način povezivanja blokova u lanac pomoću kriptografskih heš funkcija i mehanizam za dostizanje
 koncenzusa u prisustvu nekooperativnih čvorova čine blokčejn pouzdanim načinom za čuvanje i upravljanje deljenom bazom podataka.
 Jedan od najpoznatijih načina da se blokčejn ipak prevari je ukoliko napadač uspe da obezbedi 51\% mreže
@@ -206,7 +216,7 @@ Ideja decentralizacije valute posebno je primamljiva u svetu finansija jer se od
 u centralni autoritet kao što su banke ili državne vlade da bi se vrednost valute održala. 
 Prva implementirana decentralizovana digitalna valuta - kriptovaluta koja je zasnovana na blokčejnu jeste čuveni Bitkoin.
 
-Bitkoin u osnovi radi na principu transakcija - prenosa novca sa jednog na drugi "digitalni novčanik". Da bi sistem funkcionisao
+Bitkoin u osnovi radi na principu transakcija - prenosa novca sa jednog na drugi ''digitalni novčanik''. Da bi sistem funkcionisao
 kao valuta, potrebno je da se vlasništvo novca koji se šalje može utvrditi. Ovo se postiže digitalnim potpisivanjem svake transakcije
 asimetričnom kriptografijom.
 
@@ -240,12 +250,12 @@ Po ovom principu su nastali takozvani \textbf{pametni ugovori}.
 
 Pametni ugovor kao pojam prvobitno je predstavljao bilo koji protokol ili program koji se automatski izvršava po odredbama nekakvog ugovora.
 Uzmimo kao primer automat za kafu.
-Svrha ove mašine je da automatski izvršava odredbe ugovora "Kupac će dobiti kafu ukoliko plati odgovarajuću sumu novca". Međutim, kada bi se desilo da se mašina hakuje ili pokvari i ne napravi kupcu kafu iako je u nju ubacio novac, odredbe ugovora ne bi bile zadovoljene.
+Svrha ove mašine je da automatski izvršava odredbe ugovora ''Kupac će dobiti kafu ukoliko plati odgovarajuću sumu novca''. Međutim, kada bi se desilo da se mašina hakuje ili pokvari i ne napravi kupcu kafu iako je u nju ubacio novac, odredbe ugovora ne bi bile zadovoljene.
 Da bi se izbeglo to da je potrebno verovati sistemu da će ispravno izvršiti odredbe, kao i eventualne troškove zbog posledica u ovakvim situacijama, pametne ugovore je idealno implementirati u okviru blokčejna, što nam omogućava \textbf{Ethereum}.
 
 Danas sa pojavom Ethereum mreže se pojam pametnog ugovora uglavnom vezuje za bilo koji automatski proces koji se izvršava na blokčejnu.
 Ideja Ethereum protokola je da omogući decentralizovano izvršavanje bilo kakvog datog programa. Ovo se postiže različitim izmenama klasičnog bitkoin protokola.
-Glavna novina je što svaki "digitalni novčanik" uz svoju jedinstvenu adresu kao što je kod bitkoina takođe može imati memoriju i izvršivi kod u okviru sebe, nalik na prethodno opisano stanje i funkciju izmene stanja.
+Glavna novina je što svaki ''digitalni novčanik'' uz svoju jedinstvenu adresu kao što je kod bitkoina takođe može imati memoriju i izvršivi kod u okviru sebe, nalik na prethodno opisano stanje i funkciju izmene stanja.
 Kod tj. izmena stanja se izvršava tako što se u transakcijama mogu dodati podaci koji predstavljaju ulazne vrednosti za taj proces (slika \ref{fig:ethereum_state_transition}).
 
 \begin{figure}[H]
@@ -261,7 +271,7 @@ Prilikom validacije blokova u ovako izmenjenom blokčejnu moguće je za svaku tr
 
 \section{Zaključak}
 \label{sec:zakljucak}
-Pomoću raznih koncepta poput kriptografskih heš funkcija, digitalnih potpisa i merkle stabla, blokčejn je omogućio uspostavljanje kriptovaluta, sistema digitalnih transakcija koje se ne zasnivaju na poverenju i kojima ne treba centralni autoritet da bi održale vrednost. Kriptovalute takođe eliminišu 'double spending'' problem digitalnim potpisima i jako su otporne na druge vrste zloupotrebe sistema zbog ''proof of work'' i ''proof of stake'' modela. Najpoznatija i prva implementirana kriptovaluta je Bitcoin. Osim kriptovaluta, blokčejn je takođe omogućio nastanak pametnih ugovora, koji omogućavaju izvršavanje ugovora bez ljudske interakcije.
+Pomoću raznih koncepta poput kriptografskih heš funkcija, digitalnih potpisa i merkle stabla, blokčejn je omogućio uspostavljanje kriptovaluta, sistema digitalnih transakcija koje se ne zasnivaju na poverenju i kojima ne treba centralni autoritet da bi održale vrednost. Kriptovalute takođe eliminišu ''double spending'' problem digitalnim potpisima i jako su otporne na druge vrste zloupotrebe sistema zbog ''proof of work'' i ''proof of stake'' modela. Najpoznatija i prva implementirana kriptovaluta je Bitcoin. Osim kriptovaluta, blokčejn je takođe omogućio nastanak pametnih ugovora, koji omogućavaju izvršavanje ugovora bez ljudske interakcije.
 
 \subsection{Problem potrošnje struje}
 Uprkos benefitima postojanja digitalne valute koja ne zahteva verovanje centralnim autoritetima, veliku zabrinutost uzrokuje visoka potrošnja struje kriptovaluta koje koriste mehanizam ''proof of work''.
