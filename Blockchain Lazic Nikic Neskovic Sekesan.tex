@@ -94,6 +94,29 @@ Da bi heš funkcija bila efektivna u kriptografiji treba da zadovoljava sledeće
 
 Sledi algoritam za heširanje: početna poruka podeljena je na više blokova. Najčešće veličina jednog bloka je između 128 i 512 bitova. Algoritam za heširanje se sastoji od ponavljanja algoritma heširanja na jednom bloku za svaki blok. Svako ponavljanje sastoji se od ulaza fiksne dužine, koji se najčešće sastoji od dela poruke za taj blok i heš vrednosti prethodnog bloka. Kako heš vrednost svakog bloka zavisi od heš vrednosti prethodnog, lako dolazi do ranije pomenutog ''avalanche effect'' -a, gde veoma slične poruke imaju potpuno različitu heš vrednost.
 
+
+\begin{table}[H]
+\centering
+ \begin{tabular}{|c| c| c| c| c|} 
+ \hline
+ Algoritam & Dužina & Blok & Runde & Operacije\\ [0.5ex]
+ \hline
+ MD5 & 128 & 512 & 64 & i, ili, xor, rot, + mod\\ 
+ \hline
+ SHA-1 & 160 & 512 & 80 & i, ili, xor, rot, + mod\\ 
+ \hline
+ SHA-2, SHA-256 & 256 & 512 & 64 & i, ili, xor, rot, + mod, šift udesno \\
+  \hline
+ SHA-2, SHA- 512 & 512 & 1024 & 80 & i, ili, xor, rot, + mod, šift udesno \\
+ \hline
+\end{tabular}\vspace{0.5cm}\\
+\caption{Primer heš funkcija}
+\label{fig:hash_funkcije}
+\end{table}
+U tabeli \ref{fig:hash_funkcije} su dati primeri heš funkcija i odgovarajuće dužine dobijenog heša, dužine bloka korišćenog pri računanju heš funkcije, broj rundi (broj krugova izvršavanja operacija) i operacije koje svaka od heš funkcija koristi. Operacija 'xor' je bitovska operacija ekskluzivna disjunkcija, 'rot' je cirkularno pomeranje bitova,'šift' je logičko pomeranje bitova, a '+ mod' je operacija sabiranja po modulu.
+
+
+
 \subsection{Asimetrična kriptografija}
 Asimetrična kriptografija je polje kriptografije u kome se koriste parovi ključeva. Svaki par se sastoji od jednog javnog ključa i odgovarajućeg privatnog ključa. Javni ključ je dostupan svima i od njega ne zavisi sigurnost, dok privatni ključ mora ostati privatan. Svako ko ima javni ključ može njime enkriptovati poruku, ali samo onaj ko ima privatni ključ može da je dekriptuje i dobije originalnu poruku. 
 
