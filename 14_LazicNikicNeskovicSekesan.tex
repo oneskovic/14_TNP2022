@@ -51,7 +51,7 @@ otvarano pre nego što mu je dostavljeno, ako je potrebno utvrditi da li je neko
 potpisao neki ugovor ili da je neki dokument objavljen u određeno vreme (što je značajno
 u slučaju autorskih prava gde je potrebno utvrditi ko je nešto prvo objavio).
 U ove svrhe su se koristile razne metode fizičke zaštite koje su donekle aktuelne i danas -
-još su rimljani koristili voštane žigove kako bi zapečatili pisma, modernije metode uključuju
+još su Rimljani koristili voštane žigove kako bi zapečatili pisma, modernije metode uključuju
 pečate, holograme ili naprednije materijale koji bi pokazali da li je dokument otvaran.
 
 Kako bi se osigurali da je dokument napravljen u trenutku koji autor tvrdi možemo se osloniti
@@ -81,7 +81,7 @@ se formira poverljiv javni skup podataka.
 Heš funkcije su funkcije koje preslikavaju niz karaktera (u daljem tekstu poruku) proizvoljne dužine u niz karaktera fiksne dužine (u daljem tekstu heš vrednost). Osnovne osobine heš funkcije su:
 \begin{itemize}
 \item Heš vrednost poruke je brzo izračunljiva.
-\item Kako heš funkcija preslikava poruku proizvoljne dužine u heš vrednost fiksne dužine poruka je najčešće značajno veća od heš vrednosti, pa se ova funkcija naziva i funkcija sažimanja (eng. 'compression function').
+\item Kako heš funkcija preslikava poruku proizvoljne dužine u heš vrednost fiksne dužine poruka je najčešće značajno veća od heš vrednosti, pa se ova funkcija naziva i funkcija sažimanja (eng. compression function).
 \item Heš funkcija za datu poruku uvek daje istu heš vrednost.
 \end{itemize}
 
@@ -151,9 +151,9 @@ Na primer u slučaju Bitcoin blokčejna (slika \ref{fig:btc_blockchain}) blokovi
 Time što jedan blok sadrži heš bloka koji je kreiran pre njega je uspostavljen redosled blokova, pa i time redosled transakcija.
 Neke izmene nad skupom podataka moraju biti odobrene od strane pojedinca kome podaci pripadaju (na primer u slučaju transakcija) što se postiže metodama asimetrične kriptografije.
 Svi učesnici u distribuiranoj mreži mogu lako verifikovati da li su izmene u blokčejnu validne i složiti se sa izmenama ili glasati protiv njih.
-Kako bi se došlo do konsenzusa oko toga koja sekvenca izmena na blokčejnu je validna uvode se metode poput dokaza o izvršenom radu (proof of work), dokaza o posedovanju valute (proof of stake) itd.
+Kako bi se došlo do konsenzusa oko toga koja sekvenca izmena na blokčejnu je validna uvode se metode poput dokaza o izvršenom radu (eng. proof of work), dokaza o posedovanju valute (eng. proof of stake) itd.
 Metode za postizanje konsenzusa se biraju tako da se postigne veliki stepen otpornosti prema ne-kooperativnim agentima u distribuiranoj mreži.
-Zajedno sa javno dostupnim blokčejnom ovaj sistem rešava jedan od značajnih problema digitalnih dobara poznat kao ''double spending''. \cite{nakamoto2008bitcoin}
+Zajedno sa javno dostupnim blokčejnom ovaj sistem rešava jedan od značajnih problema digitalnih dobara poznat kao ''double spending'' \cite{nakamoto2008bitcoin}. 
 
 \subsection{Blokovi}
 Blokovi su manji skupovi podataka koji se povezuju kako bi formirali krajnji lanac blokova (tj. blokčejn).
@@ -181,18 +181,18 @@ koja funkcioniše na ''peer-to-peer'' osnovi. ''Peer-to-peer'' komunikacija podr
 kao server i kao klijent, odnosno drugi čvorovi mogu tražiti podatke od njih, a i oni mogu tražiti podatke od drugih čvorova u mreži.
 Glavni izazov pri implementaciji distribuirane baze podataka je kome verovati da ima ispravnu verziju podataka -
 kako osigurati da mreža funkcioniše iako postoje čvorovi koji žele namerno da lažiraju podatke
-u svoju koristi ili ako postoje čvorovi koji ne funkcionišu ispravno. Suštinski, pitanje je kako da
+u svoju korist ili ako postoje čvorovi koji ne funkcionišu ispravno. Suštinski, pitanje je kako da
 ''pošteni'' čvorovi dostignu koncenzus iako deo mreže ne sarađuje. Ovaj problem se često naziva ''problem vizantijskih generala'' (eng. Byzantine generals problem).
 Blokčejnovi najčešće koriste digitalne potpise zajedno sa algoritmom za postizanje koncenzusa poput ''proof of work'', ''proof of stake'' ili slično.
 Čime se postiže otpornost mreže čak do 50\% nekooperativnih čvorova.
-''Proof of work'' mehanizam funkcioniše tako što pri kreaciji bloka član mreže mora da uloži značajnu računarsku
-moć kako bi rešio težak algoritamski problem. Na primer u Bitcoin blokčejnu pri kreaciji novog bloga se vrše sledeći koraci:
+''Proof of work'' mehanizam funkcioniše tako što pri pravljenju bloka član mreže mora da uloži značajnu računarsku
+moć kako bi rešio težak algoritamski problem. Na primer u Bitcoin blokčejnu pri pravljenju novog bloka se vrše sledeći koraci:
 \begin{enumerate}
     \item Prikupljaju se transakcije koje će biti u novom bloku
-    \item Inicijalizuje se ''nonce'' vrednost na 0
+    \item Inicijalizuje se vrednost za kontrolisanje izlaza heš funkcije (eng. nonce) na 0
     \item Računa se heš vrednost transakcija koje treba staviti u blok, heš vrednosti prethodnog bloka i nonce vrednosti
     \item Ukoliko tako dobijena heš vrednost počinje sa $k$ nula, blok je validan i čvor ga prosleđuje ostatku mreže.
-    \item Inače uvećava se nonce vrednost za jedan i ponavo se računa heš vrednost dok se ne dobije $k$ nula na početku.
+    \item Inače, uvećava se nonce vrednost za jedan i ponovo se računa heš vrednost dok se ne dobije $k$ nula na početku.
 \end{enumerate}
 Veruje se da se izlaz neke kriptografske heš funkcije ne može lako invertovati te se veruje da ne postoji
 efikasniji način od probanja velikog broja nonce vrednosti i ponovnog računanja heš vrednosti dok se
@@ -215,8 +215,8 @@ Na slici \ref{fig:blockchain_fork} je prikazan primer grananja u blokčejnu. Crn
 a ljubičasti blokovi predstavljaju bočne lance koji su eventualno odbačeni.
 
 U kreaciji blokova najčešće ne učestvuju svi članovi mreže, već u slučaju ''proof of work'' mehanizma neki čvorovi biraju
-da se bave isključivo kreacijom blokova - ti čvorovi se nazivaju ''mineri''. U slučaju kriptovaluta mineri imaju inicijativu
-da kreiraju blokove zato što bivaju nagrađeni nakon uspešne kreacije bloka.
+da se bave isključivo pravljenjem blokova - ti čvorovi se nazivaju ''mineri''. U slučaju kriptovaluta mineri imaju inicijativu
+da kreiraju blokove zato što bivaju nagrađeni nakon uspešno napravljenog bloka.
  
 Digitalni potpisi, način povezivanja blokova u lanac pomoću kriptografskih heš funkcija i mehanizam za dostizanje
 koncenzusa u prisustvu nekooperativnih čvorova čine blokčejn pouzdanim načinom za čuvanje i upravljanje deljenom bazom podataka.
@@ -234,8 +234,8 @@ Pošto napadač može da kreira svaki blok na lancu brže nego ostatak mreže on
 \subsection{Problem potrošnje struje}
 Uprkos benefitima postojanja digitalne valute koja ne zahteva verovanje centralnim autoritetima, veliku zabrinutost uzrokuje visoka potrošnja struje kriptovaluta koje koriste mehanizam ''proof of work''.
 
-Juna 2018. Banka za međunarodna poravnanja je kritikovala korišćenje javnih ''proof of work'' blokčejnova zbog njihove visoke potrošnje struje. \cite{shin2018chapterVcryptocurrencies}
-Jedna studija Univerziteta u Kembridžu iz 2021. je utvrdila da bitkojn (sa 121 teravat-časa godišnje) koristi više struje nego Argentina (sa 121 teravat-časa godišnje) i Holandija (sa 109 teravat-časa godišnje). \cite{criddle2021bitcoin-electricity}
+Juna 2018. Banka za međunarodna poravnanja je kritikovala korišćenje javnih ''proof of work'' blokčejnova zbog njihove visoke potrošnje struje \cite{shin2018chapterVcryptocurrencies}. 
+Jedna studija Univerziteta u Kembridžu iz 2021. je utvrdila da bitkojn (sa 121.36 teravat-časa godišnje) koristi više struje nego Argentina (sa 121 teravat-časa godišnje) i Holandija (sa 109 teravat-časa godišnje). \cite{criddle2021bitcoin-electricity}
 
 Zbog ovog problema neke blokčejn platforme poput Cardano, Solana, Polkadot i od skoro Ethereum koriste ''proof of stake'' model koji troši dosta manje struje nego ''proof of work'' model.
 
@@ -248,7 +248,7 @@ Ideja decentralizacije valute posebno je primamljiva u svetu finansija jer se od
 u centralni autoritet kao što su banke ili državne vlade da bi se vrednost valute održala. 
 Prva implementirana decentralizovana digitalna valuta - kriptovaluta koja je zasnovana na blokčejnu jeste čuveni Bitkoin.
 
-Bitkoin u osnovi radi na principu transakcija - prenosa novca sa jednog na drugi ''digitalni novčanik''. Da bi sistem funkcionisao
+Bitkoin u osnovi radi na principu transakcija - prenosa novca sa jednog na drugi digitalni novčanik. Da bi sistem funkcionisao
 kao valuta, potrebno je da se vlasništvo novca koji se šalje može utvrditi. Ovo se postiže digitalnim potpisivanjem svake transakcije
 asimetričnom kriptografijom.
 
@@ -261,7 +261,7 @@ asimetričnom kriptografijom.
 
 Takođe je potrebno osigurati da se isti novac ne može potrošiti dva puta (eng. double spending problem).
 Ovaj problem je rešen upravo upotrebom blokčejna, time što celu istoriju transakcija možemo smestiti i grupisati u pojedinačne blokove, a
-proof-of-work sistemom možemo osigurati koncenzus između korisnika o tome koja istorija transakcija je aktuelna. 
+''proof of work'' sistemom možemo osigurati koncenzus između korisnika o tome koja istorija transakcija je aktuelna. 
 
 \subsection{Pametni ugovori}
 Nakon bitkoina primećen je mnogo opštiji način upotrebe blokčejn tehnologije.
@@ -272,7 +272,7 @@ Ukoliko se izvrši transakcija gde osoba $A$ pošalje $2$ bitkoina osobi $B$, š
 \begin{figure}[H]
     \centering
         \includegraphics[scale=0.6]{State_Transition.pdf}
-    \caption{Promena stanja transkacijom}
+    \caption{Promena stanja transakcijom}
     \label{fig:state_diagram}
 \end{figure}
 
