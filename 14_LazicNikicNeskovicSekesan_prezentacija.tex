@@ -78,6 +78,15 @@
 \end{frame}
 
 \begin{frame}[fragile]\frametitle{Kriptografske heš funkcije - algoritam}
+	 \begin{itemize}
+            \item Poruka podeljena u blokove (između 128 i 512 bitova)
+            \item Za svaki blok ponavljamo računanje heš vrednosti sledećih delova fiksne dužine:
+            \begin{itemize}
+                \item Deo poruke određen za taj blok
+                \item Heš vrednost prethodnog bloka
+            \end{itemize}
+            \item Najpoznatije familije algoritama su MD i SHA, razlikuju se po broju i vrsti operacija u heš funkciji
+        \end{itemize}
 	
 \end{frame}
 
