@@ -42,16 +42,31 @@
 
 \section{Uvod}
 
-\begin{frame}[fragile]\frametitle{Autentičnost dokumenata}
-	
+\begin{frame}[fragile]\frametitle{Autentičnost dokumenata i konsenzus}
+	\begin{itemize}
+		\item Kako da znamo da je neko zaista napravio neki dokument?
+		\begin{itemize}
+			\item U stvarnosti: Potpisi, pečati, hologrami, centralni autoriteti 
+			\item U digitalnom svetu: Digitalni potpisi (pomoću asimetrične kriptografije) 
+		\end{itemize}
+		\item Kako postići konsenzus kada svi ne sarađuju ili se poruke mogu izgubiti ili izmeniti (problem vizantijskih generala)?
+		\begin{itemize}
+			\item Algoritam za postizanje konsenzusa - na primer prihvatanje odluke koju donese 51\%
+			\item U digitalnom svetu - kako obezbediti da svako dobije jedan glas?
+		\end{itemize}
+
+	\end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]\frametitle{Utvrđivanje hronologije}
-	
-\end{frame}
-
-\begin{frame}[fragile]\frametitle{Verodostojan javni skup podataka - Blokčejn}
-	
+	\begin{itemize}
+		\item Kako utvrditi hronologiju izmena ili objavljivanja podataka?
+		\begin{itemize}
+			\item U stvarnosti: centralni autoritet u koji svi imaju poverenje
+			\item U digitalnom svetu: Ulančavanje kriptografskih heš funkcija
+		\end{itemize}
+		\item Kada se ove ova tri problema reše moguće je napraviti javan, verodostojan skup podataka.
+	\end{itemize}
 \end{frame}
 
 
@@ -73,15 +88,38 @@
 \section{Blokčejn}
 
 \begin{frame}[fragile]\frametitle{Struktura blokčejna}
-	
+	\begin{figure}[H]
+		\includegraphics[scale=0.25]{bitcoin_blockchain_diagram.pdf}
+	\end{figure}
+	\begin{itemize}
+		\item Blokovi su manje grupe izmena na skupu podataka (npr. kod Bitkojna - transakcije)
+		\item Blokovi su ulančani pomoću heš funkcija
+	\end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]\frametitle{Blokovi}
-	
+	\begin{itemize}
+		\item Uz svaki blok se čuva heš koji se dobija tako što se heširaju zajedno podaci iz trenutnog bloka i heš vrednost prethodnog bloka.
+		\item Primetimo da je ovako nemoguće izmeniti neki blok bez toga da izmenimo sve blokove nakon njega.
+		\item Ovako je utvrđena hronologija izmena
+	\end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]\frametitle{Decentralizacija}
-	
+	\begin{itemize}
+		\item Kako utvrditi koji lanac je ispravan?
+		\begin{itemize}
+			\item Algoritam za postizanje konsenzusa, proof of work, proof of stake...
+		\end{itemize}
+		\item Kako verifikovati da je neko odobrio neku izmenu?
+		\begin{itemize}
+			\item Digitalni potpisi
+		\end{itemize}
+		\item Ako se dva bloka kreiraju u različito vreme - fork:
+		\begin{figure}[H]
+			\includegraphics[scale=0.7,angle=-90,origin=c]{blockchain_fork.pdf}
+		\end{figure}
+	\end{itemize}
 \end{frame}
 
 
